@@ -31,7 +31,13 @@ columns are being transformed using the "dummy transformation", which creates **
 
 # test_model.py
 
-1. I needed to make a small change in order to avoid **conflicts when using different operating systems**. It is not a good practice to explicitly use either backslash or frontslash. It is **better to use a flexible separator.** In this case I used the separator from the os library. 
+1. I needed to make a small change in order to avoid **conflicts when using different operating systems**. It is not a good practice to explicitly use either backslash or frontslash. It is **better to use a flexible separator.** In this case I used the separator from the os library.
+
+
+# Overall
+
+I would like to say that unfortunately I did not get enough time to complete this challenge, the test was sent to me on Monday the 18th, that day (Monday) was a Mexican holiday. I was able to work on this mostly on Tuesday and Wednesday, starting on Thursday I went out of the city for a family trip I planned some months ago, I took my laptop with me in order to work a little bit more on this during Friday, however, it was not enough time for me to complete everything. 
+I appreciate your understanding. Regards, Eduardo Castillo Martinez
 
 
 
