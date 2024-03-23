@@ -26,6 +26,8 @@ columns are being transformed using the "dummy transformation", which creates **
 
 4. The instructions of this challenge suggested **using the self.model attribute (from the DelayModel class) to save the trained model object**, however, this approach was not working for me and the **'test_model_predict' test cases were failing**. In order to pass all the cases I needed to take a **different approach by serializing the already trained model into a disk file using pickle**, then for the 'predict()' method I load the pre-trained model from the disk and proceed to get the predictions.  
 
+5. The original code on the provided model.py was using "Union()" with parenthesis, this was throwing an error, I needed to change it to "Union[]" which is the correct way.
+   
 
 # test_model.py
 
