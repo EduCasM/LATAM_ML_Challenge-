@@ -17,3 +17,19 @@ I have chosen to use the XGBoost model since it is considered a more robust mode
 
 # model.py
 
+1. I added the functions for building the extra features period_day, high_season and min_diff. Currently the period_day and the high_season features are not being used by the models, however, we might want to consider those two features for the models in the feature, so I thought it would not hurt to have those functions available there.  
+
+2. The 10 features that are being used by the ML model are **features which originally came from categorical columns**, those categorical
+columns are being transformed using the "dummy transformation", which creates **1 new column for each category found**. On the Jupyter notebook it is an straightforward transformation, however, **when we operationalize this transformation we need to add some extra logic to handle the following case**: The caller of the model.py module passes some data for either training or predicting, the given data contains the  OPERA column, we apply the dummy transformation, but **that specific dataset does not contain observations for the "Grupo LATAM" category**, in that case the **'get_dummies' method will not create an 'OPERA_Grupo LATAM' column** and we will eventually get an error since the ML model must get that feature. In order to avoid this situation, we need to make sure that the necessary columns are created, if not, we will 'manually' add them as 0-only columns.  
+
+3. During the exploration, model selection, and hyper-parameter tunning phases is a good practice to use a specific random seed for your ML models, for repeatability and consistency, however, **once you move into production you should remove the random seed (or random state) on your models.**  
+
+4. The instructions of this challenge suggested **using the self.model attribute (from the DelayModel class) to save the trained model object**, however, this approach was not working for me and the **'test_model_predict' test cases were failing**. In order to pass all the cases I needed to take a **different approach by serializing the already trained model into a disk file using pickle**, then for the 'predict()' method I load the pre-trained model from the disk and proceed to get the predictions.  
+
+
+# test_model.py
+
+1. I needed to make a small change in order to avoid **conflicts when using different operating systems**. It is not a good practice to explicitly use either backslash or frontslash. It is **better to use a flexible separator.** In this case I used the separator from the os library. 
+
+
+
